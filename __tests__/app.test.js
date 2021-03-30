@@ -13,7 +13,7 @@ describe('app routes', () => {
         const body = { 'someData': 'this is in a body!' };
 
         const res = await request(app)
-            .post('/')
+            .post('/echo')
             .send(body);
 
         expect(res.text).toEqual(JSON.stringify(body));
