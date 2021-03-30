@@ -7,6 +7,7 @@ describe('app routes', () => {
             .get('/');
 
         expect(res.text).toEqual('hi');
+        expect(res.statusCode).toEqual(200);
     });
 
     it('Echoes req.body and returns 200 on POST /', async() => {
@@ -17,6 +18,7 @@ describe('app routes', () => {
             .send(body);
 
         expect(res.text).toEqual(JSON.stringify(body));
+        expect(res.statusCode).toEqual(200);
     });
 
     it('Returns the color on GET /color', async() => {
@@ -24,6 +26,14 @@ describe('app routes', () => {
             .get('/red');
 
         expect(res.text).toEqual('<!DOCTYPE html><html><body><h1>red</h1></body></html>');
+        expect(res.statusCode).toEqual(200);
+    });
+
+    it('Responds 404 to incorrect routes', async() => {
+        const res = await request(app)
+            .get('/purple');
+
+        expect(res.statusCode).toEqual(404);
     });
 
 });
