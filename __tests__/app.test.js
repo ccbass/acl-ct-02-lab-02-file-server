@@ -7,18 +7,7 @@ describe('app routes', () => {
         const res = await request(app)
             .get('/index.html');
 
-        expect(res.text).toEqual(
-    `<!DOCTYPE html>\r
-<html lang="en">\r
-<head>\r
-    <meta charset="UTF-8">\r
-    <title>Index</title>\r
-</head>\r
-<body>\r
-    <h1>This is an HTML document!</h1>\r
-</body>\r
-</html>`
-        );
+        expect(res.text).toEqual('<body><h1>hello, this is index</h1></body>');
         expect(res.statusCode).toEqual(200);
     });
 
